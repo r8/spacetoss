@@ -1,0 +1,70 @@
+;  ============================-
+;     SpaceToss Uplink File ===-
+;  ============================-
+;
+;  Здесь указываются узлы, которым разрешено создавать новые конференции
+;  на Вашей станции, а также настраиваются форварды запросов к ареафиксу.
+;
+;==============================================================================
+;  ВНИМАНИЕ!!!! Каждый узел, прописанный здесь в качестве аплинка,
+;               должен также присутствовать и в SPCTOSS.NOD!
+;==============================================================================
+;
+;    Формат записи:
+;
+;  BeginUplink
+;    Address          <UplinkAddress>
+;    [AreafixName      <AreafixName>]
+;    [AreafixPassword <AreafixPassword>]
+;    AutocreateGroup  <GroupName>
+;    [Unconditional    Yes|No]
+;    [Arealist        <Type> <Filename>]
+;    [AutoDesc        <Type> <Filename>]
+;    [ForwardLevel    <SecurityLevel>]
+;  EndUplink
+;
+;  AreafixName, AreafixPassword, Unconditional, Arealist и ForwardLevel
+;  являются  необязательными параметрами.
+;
+;  AreafixName и AreafixPassword настраивают имя и пароль ареафикса данного
+;  аплинка. По умолчанию паролем является пустая строчка.
+;
+;  AutocreateGroup указывает, в какой группе создадутся новые эхи, пришедшие
+;  от данного аплинка.
+;
+;  Если параметр Unconditional выставлен Yes, то запрос этому аплинку будет
+;  форвардится независимо от того, есть ли эта эха у него в списке или нет.
+;  По умолчанию - No
+;
+;  AreaList указывает путь к списку эх аплинка и его тип.
+;  AutoDesc указывает путь к файлу, из которого будут браться описания
+;  новых эх  и его тип.
+;
+;     Поддерживаются следующие типы списков:
+;
+;         Echolist      -  Простой текстовый файл формата <Эха> <Описание>
+;         xOfcEList     -  Формат списка московского бекбона.
+;         BCL           -  Binary Conference List (FTSC-57)
+;         FastEcho      -  Письмо от FastEcho без заголовка и тирлайна.
+;
+;  ForwardLevel устанавливает уровень доступа, который должен иметь узел,
+;  чтобы его запрос был переслан данному аплинку.
+;============================================================================
+BeginUplink
+  Address          2:462/1117
+  AreafixName      Areafix
+  AreafixPassword  XXXXXXXX
+  AutocreateGroup  G
+  Arealist         Echolist x:\fido\spctoss\lists\echolist.1117
+  ForwardLevel     30
+EndUplink
+
+BeginUplink
+  Address          2:462/30
+  AreafixName      Areafix
+  AreafixPassword  XXXXXXXXX
+  AutocreateGroup  G
+  Arealist         Echolist x:\fido\spctoss\lists\echolist.30
+  Unconditional    No
+  ForwardLevel     30
+EndUplink

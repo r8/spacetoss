@@ -1,0 +1,62 @@
+;  =============================-
+;     SpaceToss Netmail File ===-
+;  =============================-
+;
+;   Идея соответствует скорее майлбоксам T-mail, чем нетмайловым
+;   областям FastEcho или другого тоссера.
+;
+;   Формат записи:
+;
+;  BeginNetmail
+;    [Name       <Name>]
+;    [Address    <Address>]
+;    Path        <AreaPath>
+;    [Run        <Command>]
+;    [AutoExport <Yes|No>]
+;  EndNetmail
+;
+;  Name, Address, Run и AutoExport являются необязательными параметрами.
+;
+;    В параметре Path первые три символа указывают на тип базы.
+;    Если тип базы - hudson, то вместо пути необходимо указывать
+;  номер ареи (например: hud005)
+;    Поддерживаются следующие типы баз:
+;
+;           MSG   - Msg/Opus база.
+;           HUD   - Hudson
+;           JAM   - JAM база.
+;           SQH   - Squish база.
+;
+;  В параметрах Name и Address указывается имя и адрес получателя сообщений,
+;  которые должны импортироваться в данную нетмайловую область. Причём в
+;  этих полях можно задавать не только конкретные значения, но и маски,
+;  составленные из символов '*' и '?'. Если какой-то из этих параметров
+;  не указан, то он считается по умолчанию равен '*'.
+;
+;  При помощи параметра Run задаётся команда операционной системы, которая
+;  будет выполнена после импорта сообщений в данную область.
+;
+;  Переключатель  AutoExport указывает, надо ли экспортировать эту область
+;  в Areas.BBS или другой файл автоэкспорта.
+;  По умолчанию - No.
+;
+;============================================================================
+;BeginNetmail
+;  Name        Areafix
+;  Address     2:462/117
+;  Path        msgx:\FIDO\NETMAIL\ROBOTS\AREAFIX
+;EndNetmail
+
+;BeginNetmail
+;  Name        Allfix
+;  Address     2:462/117
+;  Path        msgx:\FIDO\NETMAIL\ROBOTS\ALLFIX
+;  Run         x:\fido\dmtic\dmtic32.exe mgr
+;EndNetmail
+
+;BeginNetmail
+;  Name        ListServ
+;  Path        msgx:\FIDO\NETMAIL\ROBOTS\LSERV
+;  Run         x:\fido\listserv\listserv.bat
+;EndNetmail
+

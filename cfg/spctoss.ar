@@ -1,0 +1,186 @@
+;  ==========================-       
+;     SpaceToss Area File ===-       
+;  ==========================-       
+;       
+;  Формат записи:       
+;       
+; BeginArea       
+;   Name   <AreaName>       
+;   [Desc  <AreaDesc>]       
+;   Type   Echo|Net|Local|Dupe|Bad       
+;   Group  <AreaGroup>       
+;   [UseAka <Address>]       
+;   [Flags  <Flags>]       
+;   [PurgeDays <Days>]       
+;   [PurgeMsgs <Msgs>]       
+;   [Path  <AreaTypeAreaPath>]       
+;   [ReadLevel   <SecurityLevel>]       
+;   [WriteLevel  <SecurityLevel>]       
+;   [Links  <AreaLinks>]       
+; EndArea       
+;       
+;    ReadLevel, WriteLevel, Flags, PurgeDays, PurgeMsgs, UseAka, Desc, Path       
+;  и Links являются необязательными параметрами.       
+;       
+;    Параметр Type указывает тип базы. База может быть одного из пяти типов:       
+;       
+;           Net   - нетмайловая база.       
+;           Echo  - эхомайловая база.       
+;           Local - локальная база. Письма из неё не экспортируются,       
+;                   для подписки она не доступна.       
+;           Dupe  - база, куда будут помещаться дублирующиеся сообщения.       
+;                   Может быть только одна.       
+;           Bad   - база, куда будут помещаться сообщения при возникновении       
+;                   каких-то ошибок. Может быть только одна.       
+;       
+;    В параметре Path первые три символа указывают на тип базы.       
+;    Если тип базы - hudson, то вместо пути необходимо указывать       
+;  номер ареи (например: hud005)       
+;    Поддерживаются следующие типы баз:       
+;       
+;           MSG   - Msg/Opus база.       
+;           HUD   - Hudson база.       
+;           JAM   - JAM база.       
+;           SQH   - Squish база.       
+;           SMB   - Synchronet база.       
+;       
+;    Если параметр Path опущен, то эха считается Passthrough.       
+;       
+;    Параметры ReadLevel и WriteLevel определяют уровень доступа,       
+;  который необходим линку, чтобы посылать в эху письма или получать       
+;  их из неё.       
+;    По умолчанию оба параметра имеют значение 0.       
+;       
+;    Параметры PurgeDays и PurgeMsgs служат для настройки правил пурджинга       
+;  почтовой базы.       
+;       
+;    Параметр UseAKA указывает на адрес, с которого Вы пишете в данную       
+;  конференцию. Это необходимо, например, для корректного экспорта информации       
+;  об эхе в конфиги редактора.       
+;    Если не указан, то программа сама подберёт найболее подходящий из Ваших       
+;  адресов.       
+;       
+;    Параметр Flags - это флаги, которыми указываются дополнительные       
+;  параметры настройки эхи. Флаг считается по умолчанию выключенным.       
+;    Доступные флаги:       
+;       
+;    E - DoNotExport        - Эха не записывается в создаваемые при       
+;                             автоэкспорте конфигурационные файлы.       
+;       
+;    H - Hidden             - Эха не показывается в отчётах менеджера подписки.       
+;       
+;    P - Passive            - Эха в пассивном режиме. Отображается       
+;                             в списке эх, но отсутствует на узле физически.       
+;                             Эха автоматически переводится в этот режим,       
+;                             если у неё остаётся всего один активный       
+;                             подписчик, который к тому же является аплинком.       
+;                             Эха автоматически переведётся в активный режим,       
+;                             как только у неё появится хотя бы один       
+;                             "живой" даунлинк.       
+;       
+;    S - StripTechInfo      - Отключает хранение в базе технических кладжей,       
+;                             таких, как SEEN-BY, PATH и VIA.       
+;       
+;    При помощи параметра Links указываются подписчики эхи. Все адреса       
+;  могут быть записаны в сокращённой форме относительно предыдущего       
+;  адреса в цепочке. Перед каждым адресом может стоять модификатор,       
+;  который указывает, в каком режиме узел подписан на эху.       
+;    Поддерживаются следующие режимы:       
+;       
+;           !     - Только чтение.       
+;           ~     - Только отправка.       
+;           &     - Locked (не читает, не пишет и не может отписаться).       
+;           #     - Passive (временно не получает эту эху).       
+;       
+;============================================================================       
+BeginArea
+  Name RSB.117
+  Desc Netmail to 2:462/117.1
+  Group A
+  Type Net
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path msgX:\FIDO\NETMAIL\RSB\117
+EndArea
+
+BeginArea
+  Name RSB.CARBON
+  Desc Carbons
+  Group B
+  Type Local
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path jamx:\fido\echo\carbon
+EndArea
+
+BeginArea
+  Name RSB.DEEP.SPACE
+  Desc Разговорная локалка /117
+  Group D
+  UseAka 2:462/117.1
+  Type Echo
+  ReadLevel 20
+  WriteLevel 30
+  PurgeDays 60
+  Path sqhx:\FIDO\ECHO\RSB.DEEP.SPACE
+  Links 2:462/1117 117.1 .2 #.3
+EndArea
+
+BeginArea
+  Name AREAFIX.IN
+  Desc AREAFIX.IN
+  Group Z
+  Type Net
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path msgx:\FIDO\NETMAIL\ROBOTS\AREAFIX
+EndArea
+
+BeginArea
+  Name BAD
+  Desc BAD
+  Group Z
+  Type Local
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path jamx:\FIDO\ECHO\BAD
+EndArea
+
+BeginArea
+  Name NETMAIL
+  Desc NETMAIL
+  Group Z
+  UseAka 2:462/117
+  Type Net
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path msgx:\FIDO\NETMAIL
+EndArea
+
+BeginArea
+  Name RSB.BADMAIL
+  Desc BADMAIL
+  Group Z
+  Type Bad
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path sqhx:\FIDO\ECHO\BADMAIL
+EndArea
+
+BeginArea
+  Name RSB.DUPEMAIL
+  Desc DUPEMAIL
+  Group Z
+  Type Dupe
+  ReadLevel 20
+  WriteLevel 30
+  PurgeMsgs 300
+  Path sqhx:\FIDO\ECHO\DUPEMAIL
+EndArea
+

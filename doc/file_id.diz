@@ -1,0 +1,28 @@
+ É¹ SpaceToss v2.0 ÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
+ ÇÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¶
+ º   The ultimate tossing utility   º
+ ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ ³ ş Dos32, Win32 and OS/2 versions ³
+ ³ ş Supports tossing of:           ³
+ ³      ù Pkt v2+                   ³
+ ³      ù Pkt 2000                  ³
+ ³ ş Supports tossing to:           ³
+ ³      ù Opus/MSG                  ³
+ ³      ù Hudson                    ³
+ ³      ù JAM                       ³
+ ³      ù Squish                    ³
+ ³      ù Synchronet Message Base   ³
+ ³ ş Supports outbound packing to:  ³
+ ³      ù Arcmail attach            ³
+ ³      ù BinkStyle outbound        ³
+ ³      ù T-Mail fileboxes          ³
+ ³      ù T-Mail long fileboxes     ³
+ ³      ù Plain directory           ³
+ ³ ş Built-in Arealink manager      ³
+ ³ ş Built-in Netmail packer        ³
+ ³ ş Built-in Echomail tracker      ³
+ ³ ş Built-in RegExps support       ³
+ ³ ş Textual configuration          ³
+ ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+ º (C)2000-2002 by Sergey Storchay  º
+ ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼

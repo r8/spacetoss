@@ -1,0 +1,13 @@
+%BLIST   - List of areas, available for you
+%AVAIL   - List of areas available from uplinks.
+%RULES ? - List of available conference rules.
+%RULES <AREA> - Send rules of specified area.
+
+%LIST,B
+%LIST,F
+%LIST,P
+%FLIST
+%PLIST
+
+%LIST/B
+%LIST /F !!!!!

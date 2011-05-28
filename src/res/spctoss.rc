@@ -1,0 +1,20 @@
+MAINICON ICON spctoss.ico
+1 VERSIONINFO
+BEGIN
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "041904E3"
+  {
+   VALUE "ProductVersion", "2.0.0\000"
+   VALUE "FileVersion", "2493\000"
+   VALUE "ProductName", "SpaceToss\000"
+   VALUE "InternalName", "SpaceToss\000"
+   VALUE "FileDescription", "SpaceToss main executable\000"
+   VALUE "LegalCopyright", "(c) Sergey Storchay, 2000-2002.\000"
+  }
+}
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 1049, 1251
+ }
+END

@@ -1,0 +1,102 @@
+;  ===============================-
+;     SpaceToss Group Defaults ===-
+;  ===============================-
+;
+;  Формат записи:
+;
+; BeginGroup
+;   Name       <GroupName>
+;   [Desc      <GroupDesc>]
+;   [EchoDesc  <AreaDesc>]
+;   [UseAka    <Address>]
+;   [Flags  <Flags>]
+;   [PurgeDays <Days>]
+;   [PurgeMsgs <Msgs>]
+;   [ReadLevel   <SequrityLevel>]
+;   [WriteLevel  <SequrityLevel>]
+;   [Path      <AreaTypeAreaPath>]
+;   [Links      <AreaLinks>]
+; EndGroup
+;
+;   Все параметры соответствуют одноимённым параметрам из конфигурации эх
+;   и будут автоматически унаследованы новой эхой при автокриейте её в эту
+;   группу.
+;
+;============================================================================
+BeginGroup
+  Name       A
+  Desc       Netmail
+  Path       msgX:\FIDO\NETMAIL
+  PurgeMsgs  800
+  ReadLevel  20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       B
+  Desc       tech
+  Path       sqhx:\FIDO\ECHO
+  PurgeMsgs  800
+  ReadLevel  20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       C
+  Desc       E-Mail
+  Path       msgX:\FIDO\NETMAIL
+  PurgeMsgs  800
+  ReadLevel  20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       D
+  Desc       Локальные эхи /117
+  EchoDesc   /117 local
+  Path       sqhx:\FIDO\ECHO
+  PurgeMsgs  500
+  ReadLevel  20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       E
+  Desc       Локальные львовские эхи
+  EchoDesc   Local
+  PurgeMsgs  200
+  Path       sqhx:\FIDO\ECHO
+  ReadLevel  20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       F
+  Desc       Technical areas
+  PurgeMsgs  200
+  Path       sqhx:\FIDO\ECHO
+  EchoDesc   Autocreated by SpaceToss
+  ReadLevel 20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       G
+  Desc       Fidonet Echoes
+  UseAKA     2:462/117.1
+  PurgeMsgs  200
+  Path       jamx:\FIDO\ECHO
+  EchoDesc   Autocreated by SpaceToss
+  ReadLevel 20
+  WriteLevel 30
+EndGroup
+
+BeginGroup
+  Name       Z
+  Desc       bad/dupe
+  EchoDesc   Autocreated by SpaceToss
+  PurgeMsgs  200
+  Path       sqhx:\FIDO\ECHO
+  ReadLevel  20
+  WriteLevel 30
+EndGroup

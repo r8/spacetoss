@@ -1,0 +1,150 @@
+;  ==========================-
+;     SpaceToss Node File ===-
+;  ==========================-
+;
+;  Формат записи:
+;
+; BeginNode
+;   Address          <NodeAddress>
+;   [SysopName       <SysopName>]
+;   [UseAKA          <YourAkaForThisNode>]
+;   [PktPassword     <Password>]
+;   [AreafixPassword <Password>]
+;   [Level           <SecurityLevel>]
+;   [Flavour         <Flavour>]
+;   [OutBound        <OutboundType>]
+;   [PktType         <PacketType>
+;   [Archiver        <ArchiverType>]
+;   [Groups          <AvailableGroups>]
+;   [MaxPktSize      <PktSize>]
+;   [MaxArcSize      <PktSize>]
+;   [Flags           <Flags>]
+; EndNode
+;
+;  Все параметры, кроме Address, являются необязательными.
+;  В случае отсутствия, Outbound, Archiver, Groups, MaxPktSize и MaxArcSize
+;  могут быть взяты из главного конфигурационного файла.
+;
+;  UseAka      - Ваш адрес, который используется при общении с данным узлом.
+;                Если этот параметр отсутствует, то программа сама подберёт
+;                найболее подходящий из списка Ваших адресов.
+;
+;  Flavour     - Флаг, с которым будет паковаться почта для данного линка.
+;                Поддерживаются следующие флаги: Normal, Crash, Hold, Direct,
+;                Immediate.
+;                По умолчанию - Normal.
+;
+;  Level       - Уровень доступа линка. Это должно быть число от 0 до 255.
+;                По умолчанию - 255.
+;
+;  OutBound    - Тип оутбаунда, в который пакуется почта для данного линка.
+;
+;     Поддерживаются следующие типы оутбаундов:
+;
+;         AMA      - Arcmail attach
+;         BSO      - Bink-Style (Portal of Power implementation)
+;         TBOX     - T-Mail fileboxes
+;         TLBOX    - T-Mail long fileboxes
+;         DISKPOLL - Персональный бокс (обыкновенная директория)
+;
+;     Если используется DISKPOLL, то после этого ключевого слова через пробел
+;  необходимо прописать путь к боксу.
+;     Например:
+;          Outbound   DISKPOLL x:\fido\outbound\personal\remote
+;
+;  PktType     - Тип пакетов, в которые пакуется почта для данного линка.
+;
+;     Поддерживаются следующие типы пакетов:
+;
+;         Pkt2+      - Pkt v2+
+;         Pkt2000    - Pkt 2000
+;
+;  По умолчанию - Pkt2+.
+;
+;  Archiver    - Архиватор, которым будет паковаться почта для данного линка.
+;
+;  Groups      - Группы конференций, доступные для данного линка.
+;
+;  MaxPktSize  - Размер, на который будут нарезаться пакеты для данного
+;                линка.
+;
+;  MaxArcSize  - Размер, на который будут нарезаться бандлы для данного
+;                линка.
+;
+;    Параметр Flags - это флаги, которыми указываются дополнительные
+;  параметры настройки ноды. Флаг считается по умолчанию выключенным.
+;    Доступные флаги:
+;
+;    A  - AllowSubscribeToAll -  Разрешает данному линку ипользовать
+;                                команды '%+ALL' и '+*'.
+;
+;    B  - UseBusyOutbound     -  включает использование BusyOutbound'а
+;                                для данного линка.
+;
+;    R  - SendRules           -  включает автоматичеcкую отсылку линку правил
+;                                эхоконференций при подписке.
+;
+;============================================================================
+;
+BeginNode
+  Address 2:462/30
+  SysopName  SySop
+  UseAka 2:462/117
+  PktPassword XXXXXXX
+  AreafixPassword XXXXXXX
+  Flavour  Normal
+  Level 50
+  Archiver ZIP
+  Groups DEFGI
+  MaxPktSize 30000
+  MaxArcSize 200000
+  Outbound  BSO
+  Flags B
+EndNode
+
+BeginNode
+  Address 2:462/1117
+  SysopName  Sysop
+  UseAka 2:462/117
+  PktPassword XXXXXX
+  AreafixPassword XXXXXXX
+  Flavour  Hold
+  Flags B
+  Level 50
+  Archiver ZIP
+  Groups DEFGI
+  MaxPktSize 30000
+  MaxArcSize 200000
+  Outbound  BSO
+EndNode
+
+BeginNode
+  Address 2:462/117.1
+  SysopName  Sysop
+  UseAka 2:462/117
+  PktPassword XXXXXXX
+  AreafixPassword XXXXXXXXX
+  Level 30
+  Flags R
+  Archiver ZIP
+  Groups DEFGI
+  MaxPktSize 30000
+  MaxArcSize 200000
+  Outbound  BSO
+EndNode
+
+BeginNode
+  Address 2:462/117.3
+  SysopName  Point Station
+  UseAka 2:462/117
+  PktPassword XXXXX
+  AreafixPassword XXXXXX
+  Flags R
+  Flavour  Hold
+  Level 30
+  Archiver ZIP
+  Groups DEFGI
+  MaxPktSize 30000
+  MaxArcSize 200000
+  Outbound  BSO
+EndNode
